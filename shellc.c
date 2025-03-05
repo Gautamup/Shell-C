@@ -16,7 +16,7 @@ char* shl_reaf_line(void){
 
   return line;
 }
-}
+
 
 void shl_loop(void){
     char* line;
