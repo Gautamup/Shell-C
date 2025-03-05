@@ -1,11 +1,21 @@
 #include <stdio.h>
 #define BUF_SIZE 1024
 
-char* shl_read_line(void){
-    int bufSize = BUF_SIZE;
-    int pos = 0;
-    char* buffer = malloc(sizeof(char) * bufSize);
-    
+char* shl_reaf_line(void){
+    char* line = NULL;
+    ssize_t bufsize = 0; // have getline allocate a buffer for us
+
+    if (getline(&line, &bufsize, stdin) == -1){
+        if (feof(stdin)) {
+        exit(EXIT_SUCCESS);  // We recieved an EOF
+        } else  {
+        perror("readline");
+        exit(EXIT_FAILURE);
+        }
+    }
+
+  return line;
+}
 }
 
 void shl_loop(void){
